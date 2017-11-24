@@ -1,15 +1,41 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import _ from "lodash";
+import React, {Component} from "react";
+import ReactDOM from "react-dom";
+import elasticsearch from "elasticsearch";
+import SearchBar from "./components/search_bar";
 
-import App from './components/app';
-import reducers from './reducers';
+let client = new elasticsearch.Client({host: "localhost:9200", log: "trace"});
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+class App extends Component {
+  constructor(props) {
+    super(props);
 
-ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
-    <App />
-  </Provider>
-  , document.querySelector('.container'));
+    this.state = {
+      results: [],
+      selectedResult: null
+    };
+
+    this.eSearch("shake");
+  }
+
+  eSearch(term) {
+    client.search({q: term}).then(function(body) {
+      this.setState({results: body.hits.hits});
+    }.bind(this), function(error) {
+      console.trace(error.message);
+    });
+  }
+
+  render() {
+    const eSearch = _.debounce(term => {
+      this.eSearch(term);
+    }, 300);
+
+    return (<div>
+      <SearchBar onSearchTermChange={eSearch}/>
+      <ResultList onResultSelect={selectedResult => this.setState({selectedResult})} results={this.state.results}/>
+    </div>);
+  }
+}
+
+ReactDOM.render(<App/>, document.querySelector(".container"));

@@ -1,22 +1,27 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 
-class SearchResults extends Component {
+class SearchBar extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { term: "" };
+  }
+
   render() {
-    const results = this.props.results;
+    return (
+      <div className="search-bar">
+        <input
+          value={this.state.term}
+          onChange={event => this.onInputChange(event.target.value)}
+        />
+      </div>
+    );
+  }
 
-    return (<div className="search_results">
-      <hr/>
-      <ul>
-        {
-          results.map(result => {
-            return (<li key={result._id}>
-              {result._source.plugins.av.clamav.result}
-            </li>);
-          })
-        }
-      </ul>
-    </div>);
+  onInputChange(term) {
+    this.setState({ term });
+    this.props.onSearchTermChange(term);
   }
 }
 
-export default SearchResults;
+export default SearchBar;
