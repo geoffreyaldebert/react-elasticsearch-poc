@@ -1,7 +1,11 @@
 ELASTIC?=5.6
 
+.PHONY: dev
+dev:
+	npm install
+
 .PHONY: start
-start: stop
+start: stop dev
 	@echo "===> Starting elasticsearch..."
 	@docker run -d --name elasticsearch -p 9200:9200 -e http.cors.enabled=true -e http.cors.allow-origin="/https?:\/\/localhost(:[0-9]+)?/" blacktop/elasticsearch:$(ELASTIC);sleep 15
 	@echo "===> Adding data to elasticsearch..."
