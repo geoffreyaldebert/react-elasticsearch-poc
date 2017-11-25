@@ -9,8 +9,8 @@ const ResultListItem = ({ result, onResultSelect }) => {
       <div className="result-list media">
         <div className="media-body">
           <div className="media-heading">
-          <h5 className={"mt-0"}>{playName}</h5>
-          {textEntry}
+            <h5 className={"mt-0"}>{playName}</h5>
+            {textEntry}
           </div>
         </div>
       </div>

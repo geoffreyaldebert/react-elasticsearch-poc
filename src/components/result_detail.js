@@ -13,10 +13,26 @@ const ResultDetail = ({ result }) => {
   return (
     <div className="result-detail col-md-4">
       <div className="details">
-        <div><h2>Play: <code>{playName}</code></h2></div>
-        <div><h4>Line: <code>{lineNumber}</code></h4></div>        
-        <div><h4>Speech: <code>{speechNumber}</code></h4></div>
-        <div><h4>Speaker: <code>{speaker}</code></h4></div>
+        <div>
+          <h2>
+            Play: <code>{playName}</code>
+          </h2>
+        </div>
+        <div>
+          <h4>
+            Line: <code>{lineNumber}</code>
+          </h4>
+        </div>
+        <div>
+          <h4>
+            Speech: <code>{speechNumber}</code>
+          </h4>
+        </div>
+        <div>
+          <h4>
+            Speaker: <code>{speaker}</code>
+          </h4>
+        </div>
       </div>
     </div>
   );
