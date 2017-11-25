@@ -31,3 +31,7 @@ $ make start
 ```
 
 ![screenshot](https://github.com/blacktop/react-elasticsearch-poc/raw/master/screenshot.png)
+
+## License
+
+MIT Copyright (c) 2017 blacktop
