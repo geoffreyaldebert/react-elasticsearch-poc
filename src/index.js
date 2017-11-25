@@ -29,7 +29,7 @@ class App extends Component {
       if (error) {
         console.error('elasticsearch cluster is down!');
       } else {
-        console.log('All is well');
+        console.log('successfully connected to elasticsearch cluster');
       }
     });
     // search for term
