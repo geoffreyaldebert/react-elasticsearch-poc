@@ -23,3 +23,11 @@ Start ReactJS App
 > npm install
 > npm start
 ```
+
+=OR=
+
+```bash
+$ make start
+```
+
+![screenshot](https://github.com/blacktop/react-elasticsearch-poc/raw/master/screenshot.png)
