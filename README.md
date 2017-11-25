@@ -1,5 +1,7 @@
 # react-elasticsearch-poc
 
+[![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
+
 > ReactJS + Elasticsearch Proof of Concept - for use with Malice UI
 
 --------------------------------------------------------------------------------
