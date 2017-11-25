@@ -3,8 +3,10 @@ import React, {Component} from "react";
 import ReactDOM from "react-dom";
 import elasticsearch from "elasticsearch";
 import SearchBar from "./components/search_bar";
+import ResultList from "./components/result_list";
 
 let client = new elasticsearch.Client({host: "localhost:9200", log: "trace"});
+const searchSize = 100;
 
 class App extends Component {
   constructor(props) {
@@ -19,9 +21,21 @@ class App extends Component {
   }
 
   eSearch(term) {
-    client.search({q: term}).then(function(body) {
-      this.setState({results: body.hits.hits});
-    }.bind(this), function(error) {
+    // pin client
+    client.ping({
+      requestTimeout: 10000
+    }, function(error) {
+      if (error) {
+        console.error('elasticsearch cluster is down!');
+      } else {
+        console.log('All is well');
+      }
+    });
+    // search for term
+    client.search({q: term, size: searchSize}).then(body => {
+      let esResults = body.hits.hits;
+      this.setState({results: esResults, selectedResult: esResults[0]});
+    }, error => {
       console.trace(error.message);
     });
   }
