@@ -5,7 +5,7 @@ import elasticsearch from "elasticsearch";
 import SearchBar from "./components/search_bar";
 import ResultList from "./components/result_list";
 
-let client = new elasticsearch.Client({host: "localhost:9200", log: "trace"});
+let client = new elasticsearch.Client({host: "localhost:9200", log: "error"});
 const searchSize = 100;
 
 class App extends Component {

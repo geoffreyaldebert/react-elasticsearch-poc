@@ -9,7 +9,7 @@ const ResultListItem = ({ result, onResultSelect }) => {
       <div className="result-list media">
         <div className="media-body">
           <div className="media-heading">
-          <h5 class="mt-0">{playName}</h5>
+          <h5 className={"mt-0"}>{playName}</h5>
           {textEntry}
           </div>
         </div>
