@@ -19,7 +19,7 @@ class App extends Component {
       selectedResult: null
     };
 
-    this.eSearch("thumbs up");
+    this.eSearch("smile");
   }
 
   eSearch(term) {
@@ -37,7 +37,12 @@ class App extends Component {
       }
     );
     // search for term
-    client.search({ q: term, size: searchSize }).then(
+    client.search({ 
+      index: 'scifgif',
+      type: 'giphy',
+      q: term, 
+      size: searchSize 
+    }).then(
       body => {
         let esResults = body.hits.hits;
         this.setState({ results: esResults, selectedResult: esResults[0] });
