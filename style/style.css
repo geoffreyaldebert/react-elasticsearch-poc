@@ -72,7 +72,7 @@ code {
 .header__button {
   padding: 0.6rem 1rem;
   margin: 0.25rem;
-  background: rgb(25, 47, 168);
+  background: #1161bd;
   border: none;
   color: #fff;
   border-radius: 3px;
@@ -80,7 +80,7 @@ code {
 }
 
 .header__button:hover {
-  background: #008b9b;
+  background: rgb(25, 47, 168);
 }
 
 .grid {

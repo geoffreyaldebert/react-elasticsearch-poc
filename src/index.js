@@ -7,7 +7,7 @@ import ResultDetail from "./components/result_detail";
 import ResultList from "./components/result_list";
 import Gallery from "./components/Gallery";
 
-let client = new elasticsearch.Client({ host: "localhost:9200", log: "error" });
+let client = new elasticsearch.Client({ host: "localhost:9200", log: "trace" });
 const searchSize = 100;
 
 class App extends Component {
@@ -19,7 +19,7 @@ class App extends Component {
       selectedResult: null
     };
 
-    this.eSearch("shake");
+    this.eSearch("thumbs up");
   }
 
   eSearch(term) {

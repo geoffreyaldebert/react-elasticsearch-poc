@@ -1,4 +1,4 @@
-ELASTIC?=5.6
+SCIFGIF?=0.3.0
 
 .PHONY: dev
 dev:
@@ -6,14 +6,12 @@ dev:
 
 .PHONY: start
 start: stop dev
-	@echo "===> Starting elasticsearch..."
-	@docker run -d --name elasticsearch -p 9200:9200 -e http.cors.enabled=true -e http.cors.allow-origin="/https?:\/\/localhost(:[0-9]+)?/" blacktop/elasticsearch:$(ELASTIC);sleep 15
-	@echo "===> Adding data to elasticsearch..."
-	@cd scripts; ./add_data.sh
+	@echo "===> Starting scifgif..."
+	@docker run --init -d --name scifgif -p 3993:3993 -p 9200:9200 blacktop/scifgif:$(SCIFGIF) --host localhost;sleep 15
 	@open -a Brave http://localhost:8080/webpack-dev-server/
 	@npm run start
 
 .PHONY: stop
 stop:
-	@echo "===> Stopping elasticsearch..."
-	@docker rm -f elasticsearch || true
+	@echo "===> Stopping scifgif..."
+	@docker rm -f scifgif || true
