@@ -1,10 +1,10 @@
-const { Component } = React;
+import React, { Component } from "react";
 
 /* #################### */
 /* ##### Gallery ###### */
 /* #################### */
 
-class Gallery extends Component {
+export default class Gallery extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -65,11 +65,9 @@ class Gallery extends Component {
 
 const Header = ({ addImage }) => (
   <header className="header">
-    <h1 className="header__title">CSS grid gallery generator</h1>
+    <h1 className="header__title">scifgif - image search</h1>
     <p className="header__intro">
-      Add images of various formats via the buttons below. Watch the{" "}
-      <code>grid-auto-flow: dense</code> property from the CSS grid spec go to
-      work.. Pretty cool, heh?
+      Type a <code>keyword</code> to filter on and then click the image to copy it's URL to your clipboard.
     </p>
     <Controls addImage={addImage} />
   </header>
@@ -81,7 +79,7 @@ const Header = ({ addImage }) => (
 
 class Controls extends Component {
   render() {
-    const sizes = ["small", "wide", "tall", "big"];
+    const sizes = ["giphy", "xkcd", "dilbert"];
     const buttons = sizes.map((size, key) => {
       return (
         <button
@@ -146,4 +144,4 @@ class Image extends Component {
 /* ##### Render Method ###### */
 /* ########################## */
 
-ReactDOM.render(<Gallery />, document.getElementById("root"));
+// ReactDOM.render(<Gallery />, document.getElementById("root"));

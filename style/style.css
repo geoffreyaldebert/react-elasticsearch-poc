@@ -72,7 +72,7 @@ code {
 .header__button {
   padding: 0.6rem 1rem;
   margin: 0.25rem;
-  background: #09a;
+  background: rgb(25, 47, 168);
   border: none;
   color: #fff;
   border-radius: 3px;

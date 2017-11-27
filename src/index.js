@@ -5,6 +5,7 @@ import elasticsearch from "elasticsearch";
 import SearchBar from "./components/search_bar";
 import ResultDetail from "./components/result_detail";
 import ResultList from "./components/result_list";
+import Gallery from "./components/Gallery";
 
 let client = new elasticsearch.Client({ host: "localhost:9200", log: "error" });
 const searchSize = 100;
@@ -55,11 +56,12 @@ class App extends Component {
     return (
       <div>
         <SearchBar onSearchTermChange={eSearch} />
-        <ResultDetail result={this.state.selectedResult} />
+        {/*  <ResultDetail result={this.state.selectedResult} />
         <ResultList
           onResultSelect={selectedResult => this.setState({ selectedResult })}
           results={this.state.results}
-        />
+        /> */}
+        <Gallery />
       </div>
     );
   }
