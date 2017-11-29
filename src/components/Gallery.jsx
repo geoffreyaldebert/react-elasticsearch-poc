@@ -31,13 +31,10 @@ export default class Gallery extends Component {
       </div>
     );
   }
+
   addImage(format) {
     const { gallery } = this.state;
     const galleryLength = gallery.length;
-
-    // generating randomised dimensions between 500 and 520px
-    const width = Math.floor(Math.random() * 21 + 500);
-    const height = Math.floor(Math.random() * 21 + 500);
 
     const newImage = {
       id: galleryLength + 1,
@@ -49,6 +46,7 @@ export default class Gallery extends Component {
       gallery: gallery.concat(newImage)
     });
   }
+
   deleteImage(id) {
     const newState = this.state.gallery.filter(item => {
       return item.id !== id;
@@ -93,6 +91,7 @@ class Controls extends Component {
     });
     return <div className="controls">{buttons}</div>;
   }
+
   handleClick(size) {
     this.props.addImage(size);
   }
@@ -104,26 +103,13 @@ class Controls extends Component {
 
 class Image extends Component {
   render() {
-    const { id, format, height, width } = this.props;
-    let formatClass;
-    switch (format) {
-      case "wide":
-        formatClass = "grid__item--wide";
-        break;
-      case "tall":
-        formatClass = "grid__item--tall";
-        break;
-      case "big":
-        formatClass = "grid__item--big";
-        break;
-      default:
-        formatClass = "";
-    }
+    const { id, url } = this.props;
+
     return (
-      <li className={`grid__item ${formatClass}`}>
+      <li className={`grid__item grid__item--big`}>
         <img
           className="grid__image"
-          src={`https://unsplash.it/${width}/${height}`}
+          src={`http://localhost:3993/${url}`}
           alt=""
         />
         <button
@@ -135,13 +121,8 @@ class Image extends Component {
       </li>
     );
   }
+
   handleDelete(id) {
     this.props.deleteImage(id);
   }
 }
-
-/* ########################## */
-/* ##### Render Method ###### */
-/* ########################## */
-
-// ReactDOM.render(<Gallery />, document.getElementById("root"));

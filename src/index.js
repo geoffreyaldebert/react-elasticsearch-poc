@@ -66,7 +66,7 @@ class App extends Component {
           onResultSelect={selectedResult => this.setState({ selectedResult })}
           results={this.state.results}
         /> */}
-        <Gallery />
+        <Gallery results={this.state.results}/>
       </div>
     );
   }
