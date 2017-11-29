@@ -12,14 +12,13 @@ export default class Gallery extends Component {
     };
   }
   render() {
-    const images = this.state.gallery.map((image, key) => {
+    // const images = this.state.gallery.map((image, key) => {
+    const images = this.props.results.map((image, key) => {
       return (
         <Image
           key={key}
-          id={image.id}
-          format={image.format}
-          height={image.height}
-          width={image.width}
+          id={image._source.id}
+          url={image._source.path}
           deleteImage={this.deleteImage.bind(this)}
         />
       );
