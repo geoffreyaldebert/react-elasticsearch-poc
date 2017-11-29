@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 /* #################### */
 /* ##### Gallery ###### */
@@ -8,19 +9,21 @@ export default class Gallery extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      gallery: []
+      gallery: [],
+      copied: false,
+      value: '',
     };
   }
   render() {
     // const images = this.state.gallery.map((image, key) => {
     const images = this.props.results.map((image, key) => {
       return (
-        <Image
-          key={key}
-          id={image._source.id}
-          url={image._source.path}
-          deleteImage={this.deleteImage.bind(this)}
-        />
+          <Image
+            key={key}
+            id={image._source.id}
+            url={image._source.path}
+            deleteImage={this.deleteImage.bind(this)}
+          />
       );
     });
     return (
@@ -106,17 +109,19 @@ class Image extends Component {
 
     return (
       <li className={`grid__item grid__item--big`}>
-        <img
-          className="grid__image"
-          src={`http://localhost:3993/${url}`}
-          alt=""
-        />
-        <button
+        <CopyToClipboard text={`http://localhost:3993/${url}`}>
+          <img
+            className="grid__image"
+            src={`http://localhost:3993/${url}`}
+            alt=""
+          />
+        </CopyToClipboard>
+        {/* <button
           className="grid__close"
           onClick={this.handleDelete.bind(this, id)}
         >
           &times;
-        </button>
+        </button> */}
       </li>
     );
   }
