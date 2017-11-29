@@ -65,9 +65,9 @@ export default class Gallery extends Component {
 
 const Header = ({ addImage }) => (
   <header className="header">
-    <h1 className="header__title">scifgif - image search</h1>
+    <h1 className="header__title">scif[gif] - image search</h1>
     <p className="header__intro">
-      Type a <code>keyword</code> to filter on and then click the image to copy it's URL to your clipboard.
+      Type <code>keywords</code> to filter on and then click the image to copy it's URL to your clipboard.
     </p>
     <Controls addImage={addImage} />
   </header>
