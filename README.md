@@ -32,7 +32,7 @@ Start ReactJS App
 $ make start
 ```
 
-![screenshot](hhttps://raw.githubusercontent.com/blacktop/react-elasticsearch-poc/scifgif/screenshot.png)
+![screenshot](https://raw.githubusercontent.com/blacktop/react-elasticsearch-poc/scifgif/screenshot.png)
 
 ## License
 
