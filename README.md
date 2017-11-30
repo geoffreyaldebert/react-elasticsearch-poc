@@ -36,4 +36,4 @@ $ make start
 
 ## License
 
-MIT Copyright (c) 2017 blacktop
+MIT Copyright (c) 2017 **blacktop**
