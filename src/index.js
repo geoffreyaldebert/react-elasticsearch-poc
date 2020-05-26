@@ -7,8 +7,9 @@ import ResultDetail from "./components/result_detail";
 import ResultList from "./components/result_list";
 
 const ELK_SECRET = process.env.ELK_SECRET;
+const ELK_URL = process.env.ELK_URL;
 
-let client = new elasticsearch.Client({ host: "dataeng-01.infra.data.gouv.fr:9200", auth: ELK_SECRET, log: "error" });
+let client = new elasticsearch.Client({ host: ELK_URL, auth: ELK_SECRET, log: "error" });
 const searchSize = 100;
 
 class App extends Component {
