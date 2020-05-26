@@ -17,10 +17,20 @@
   border-radius: 4px;
 }
 
+.result-list {
+  width: 100%;
+}
+
 .list-group-item {
+  width: 100%;
   cursor: pointer;
 }
 
 .list-group-item:hover {
   background-color: #eee;
+}
+
+.main-title{
+  margin: 20px;
+  text-align: center;
 }

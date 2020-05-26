@@ -12,7 +12,7 @@ const ResultList = props => {
     );
   });
 
-  return <ul className="col-md-8 list-group">{resultItems}</ul>;
+  return <ul>{resultItems}</ul>;
 };
 
 export default ResultList;

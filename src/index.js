@@ -6,7 +6,9 @@ import SearchBar from "./components/search_bar";
 import ResultDetail from "./components/result_detail";
 import ResultList from "./components/result_list";
 
-let client = new elasticsearch.Client({ host: "localhost:9200", log: "error" });
+const ELK_SECRET = process.env.ELK_SECRET;
+
+let client = new elasticsearch.Client({ host: "dataeng-01.infra.data.gouv.fr:9200", auth: ELK_SECRET, log: "error" });
 const searchSize = 100;
 
 class App extends Component {
@@ -18,7 +20,7 @@ class App extends Component {
       selectedResult: null
     };
 
-    this.eSearch("shake");
+    this.eSearch("");
   }
 
   eSearch(term) {
@@ -36,7 +38,20 @@ class App extends Component {
       }
     );
     // search for term
-    client.search({ q: term, size: searchSize }).then(
+
+    let bodysearch = {
+      query: {
+        fuzzy: {
+            header: {
+              value: term
+            }
+        }
+      }
+    }
+
+
+    //client.search({ index: "csvresource", q: term, size: searchSize }).then(
+    client.search({ index: "csvresource", body:bodysearch, size: searchSize }).then(
       body => {
         let esResults = body.hits.hits;
         this.setState({ results: esResults, selectedResult: esResults[0] });
@@ -54,8 +69,8 @@ class App extends Component {
 
     return (
       <div>
+        <p className="main-title">Moteur de recherche des resources de <a href="http://data.gouv.fr">data.gouv.fr</a></p>
         <SearchBar onSearchTermChange={eSearch} />
-        <ResultDetail result={this.state.selectedResult} />
         <ResultList
           onResultSelect={selectedResult => this.setState({ selectedResult })}
           results={this.state.results}
